@@ -38,8 +38,8 @@ class Sprite{
     }
 
     draw(ctx){
-        const x =this.gameObject.x*16-8; //each square is 16*16
-        const y =this.gameObject.y*16-18; //each square is 16*16
+        const x =this.gameObject.x-8; //each square is 16*16
+        const y =this.gameObject.y-18; //each square is 16*16
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,x,y);
 
