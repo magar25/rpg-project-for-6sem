@@ -17,6 +17,7 @@ class Person extends GameObject{
 
     update(state){
         this.updatePosition();
+        this.updateSprite(state)
 
         if(this.isPlayerControlled && this.movingPogressRemaining===0 && state.arrow){  //move only after finishing moving 
             this.direction=state.arrow; // taking arrow key 
@@ -25,10 +26,24 @@ class Person extends GameObject{
     }
 
     updatePosition(){
-        if(this.movingPogressRemaining>0){
+        if(this.movingPogressRemaining>0){ //will change sprite pased on direction pressed 
             const[property, change] = this.directionUpdate[this.direction];
             this[property] += change;
-            this.movingPogressRemaining -=1;
+            this.movingPogressRemaining -=1; // will loop the animation back to the start of the array
         }
+    }
+
+
+    updateSprite(state){
+       
+        if(this.isPlayerControlled && this.movingPogressRemaining===0 && !state.arrow){  //when no arrow is pressed idle sprite will be used
+            this.sprite.setAnimation("idle-"+this.direction);
+            return;
+        }
+        
+        if(this.movingPogressRemaining > 0){ // when arrow is pressed walking animation will be used 
+            this.sprite.setAnimation("walk-"+this.direction);
+        }
+
     }
 }

@@ -25,17 +25,58 @@ class Sprite{
 
         //Configuring animation and initial state
         this.animations = config.animations || {
-            idleDown:[
-                [0,0] //defaut animations
-            ]
+            "idle-down":[ [0,0] ],//defaut animations 
+            "idle-right":[[0,1]],
+            "idle-up":[[0,2]],
+            "idle-left":[[0,3]],
+            "walk-down": [[1,0],[0,0],[3,0],[0,0],],
+            "walk-right":[[1,1],[0,1],[3,1],[0,1],],
+            "walk-up":   [[1,2],[0,2],[3,2],[0,2]],
+            "walk-left": [[1,3],[0,3],[3,3],[0,3],]
+         
         }
-        this.currentAnimation=config.currentAnimation || "idleDown";
+        this.currentAnimation="walk-up" ; //config.currentAnimation || "idle-down";
         this.currentAnimationFrame=0;
+
+        this.animationFrameLimit=config.animationFrameLimit || 8 ;//higher number slower the character and vice versa
+        this.animatonFrameProgress = this.animationFrameLimit; // track time of animaton 
 
 
         //refrence the game object
         this.gameObject = config.gameObject;
     }
+
+    get frame(){
+        return this.animations[this.currentAnimation][this.currentAnimationFrame];
+    }
+
+    setAnimation(key){
+        if(this.currentAnimation !== key){
+            this.currentAnimation=key;
+            this.currentAnimationFrame =0;
+            this.animatonFrameProgress = this.animationFrameLimit;
+        }
+    }
+
+
+    updateAnimationPogress(){
+        //downtick frame pogress
+        if(this.animatonFrameProgress > 0){
+            this.animatonFrameProgress -= 1;
+            return;
+        }
+
+        //reset the counter
+        this.animatonFrameProgress=this.animationFrameLimit;
+        this.currentAnimationFrame +=1;
+
+        if(this.frame == undefined ){
+            this.currentAnimationFrame=0;
+        }
+
+    }
+
+
 
     draw(ctx){
         const x =this.gameObject.x-8; //each square is 16*16
@@ -43,11 +84,15 @@ class Sprite{
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,x,y);
 
+
+        const [frameX, frameY]= this.frame;
+
         this.isLoaded &&  ctx.drawImage(this.image,
-            0,0, // left and right cut
+            frameX *32,frameY *32, // left and right cut
             32,32, // size of the cut
             x,y,
             32,32 // size of which it should be drawn
             )
+            this.updateAnimationPogress();
     }
 }
