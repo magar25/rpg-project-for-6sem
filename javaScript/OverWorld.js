@@ -23,7 +23,7 @@ class Overworld{
            Object.values(this.map.gameObjects).forEach(object =>{
             object.update({
                 arrow: this.drectionInput.direction,
-                map:this.map
+                map:this.map,
             })   
          })
 
@@ -33,7 +33,9 @@ class Overworld{
             this.map.drawLowerImage(this.ctx, cameraPerson);
 
             //draw game Objects
-            Object.values(this.map.gameObjects).forEach(object =>{
+            Object.values(this.map.gameObjects).sort((a,b) =>{
+                return a.y -b.y; // to display the sprite correctly if infront characters
+            }).forEach(object =>{
                 
                 object.sprite.draw(this.ctx,cameraPerson);
             })
@@ -58,6 +60,15 @@ class Overworld{
         this.drectionInput.main();
 
         this.startGameLoop(); // starts this loop when the game starts
+
+        this.map.startCutscene([
+            // setting up event when cutscene triggers
+            {who:"hero", type :"walk" , direction: "down"},
+            {who:"hero", type :"walk" , direction: "down"},
+            {who:"npcA", type :"walk" , direction: "left"},
+            {who:"npcA", type :"walk" , direction: "left"},
+            {who:"npcA", type :"walk" , direction: "up", time: 800},
+        ])
         
 
     }

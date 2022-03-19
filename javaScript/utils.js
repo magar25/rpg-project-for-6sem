@@ -21,5 +21,16 @@ const utils={
             y+= size;
         }
         return{x,y};
+    },
+    //checking what the characters are doing
+    emitEvent(name , detail){
+    
+        const event = new CustomEvent(name,{
+            detail     
+        });
+        document.dispatchEvent(event);
+
     }
-}
+
+    }
+
