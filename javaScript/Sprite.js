@@ -78,9 +78,9 @@ class Sprite{
 
 
 
-    draw(ctx){
-        const x =this.gameObject.x-8; //each square is 16*16
-        const y =this.gameObject.y-18; //each square is 16*16
+    draw(ctx,cameraPerson){
+        const x =this.gameObject.x-8+ utils.withGrid(10.5)-cameraPerson.x; //each square is 16*16
+        const y =this.gameObject.y-18+ utils.withGrid(6)-cameraPerson.y; //each square is 16*16
 
         this.isShadowLoaded && ctx.drawImage(this.shadow,x,y);
 
