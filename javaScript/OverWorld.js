@@ -80,7 +80,7 @@ class Overworld {
     }
 
     main() {
-        this.startMap(window.OverworldMaps.DemoRoom);
+        this.startMap(window.OverworldMaps.Kitchen);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
@@ -92,17 +92,17 @@ class Overworld {
 
         // this.map.startCutscene([
 
-
+        //     { type: "changeMap", map: "DemoRoom" },
 
         //     //  setting up event when cutscene triggers
 
-        //     { who: "hero", type: "walk", direction: "down" },
-        //     { who: "hero", type: "walk", direction: "down" },
-        //     { who: "npcA", type: "walk", direction: "left" },
-        //     { who: "npcA", type: "walk", direction: "up" },
-        //     { who: "npcA", type: "stand", direction: "left", time: 200 },
-        //     { who: "hero", type: "stand", direction: "right", time: 200 },
-        //     { type: "textMessage", text: " HELLO !" },
+        //     // { who: "hero", type: "walk", direction: "down" },
+        //     // { who: "hero", type: "walk", direction: "down" },
+        //     // { who: "npcA", type: "walk", direction: "left" },
+        //     // { who: "npcA", type: "walk", direction: "up" },
+        //     // { who: "npcA", type: "stand", direction: "left", time: 200 },
+        //     // { who: "hero", type: "stand", direction: "right", time: 200 },
+        //     // { type: "textMessage", text: " HELLO HOW ARE YOU !" },
         // ])
 
 
