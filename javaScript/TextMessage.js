@@ -30,7 +30,6 @@ class TextMessage {
 
         //adding event listener to the enter key 
         this.actionListener = new keyPressListener("Enter", () => {
-
             this.done();
         })
     }
