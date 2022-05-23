@@ -39,7 +39,7 @@ class Battle {
                 }, this),
             }
         }
-        //creating battle sprites for hero and enemy
+        //creating dynamic battle sprites for hero and enemy
     createElement() {
         this.element = document.createElement("div");
         this.element.classList.add("Battle");
@@ -47,6 +47,7 @@ class Battle {
         <div class="Battle_hero">
         <img src="${'/images/characters/people/hero.png'}" alt="Hero" />
         </div>
+        
         <div class ="Battle_enemy">
         <img src ="${'/images/characters/people/npc3.png'}" alt="Enemy" />
         </div>

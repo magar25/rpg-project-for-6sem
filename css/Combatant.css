@@ -5,10 +5,37 @@
     position: absolute;
 }
 
+
+/* to scale display hud */
+
+.Battle .Combatant {
+    transform: scale(2);
+}
+
+
+/* to hide the hud of the non active team */
+
+.Battle .Combatant[data-active="false"] {
+    opacity: 0;
+}
+
+
+/* to show the hud of active team */
+
+.Battle .Combatant[data-active="true"] {
+    opacity: 1;
+}
+
+
+/* for player's dispay */
+
 .Combatant[data-team="player"] {
     left: 46px;
-    top: 77px;
+    top: 70px;
 }
+
+
+/* for enemy's display*/
 
 .Combatant[data-team="enemy"] {
     top: 28px;
@@ -68,6 +95,9 @@
     height: 3px;
 }
 
+
+/* speed of how fast the hp decreses */
+
 .Combatant_life-container>rect {
     transition: width 0.2s;
 }
@@ -78,9 +108,9 @@
 .Combatant_xp-container {
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 8px;
     width: 26px;
-    height: 3px;
+    height: 2px;
 }
 
 

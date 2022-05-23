@@ -9,16 +9,19 @@ class Combatant {
     createElement() {
         this.hudElement = document.createElement("div");
         this.hudElement.classList.add("Combatant");
-        this.hudElement.setAttribute("data-combatant", this.id);
-        this.hudElement.setAttribute("data-team", this.team);
+        this.hudElement.setAttribute("data-combatant", this.id); // id is for player or enemy
+        this.hudElement.setAttribute("data-team", this.team); // which team it belongs to
 
         //for name, level, hp bar and xp bar
         this.hudElement.innerHTML = (`
         <p class="Combatant_name">${this.name}</p>
+
         <p class="Combatant_level"></p>
+        
         <div class="Combatant_character_corp">
         <img class="Combatant_character" alt="${this.name}" src="${this.src}" />
         </div>
+
         <img class="Combatant_type" src="${this.icon}" alt="${this.type}" />
     
         <svg viewBox="0 0 26 3" class="Combatant_life-container">
@@ -33,7 +36,6 @@ class Combatant {
 
         <p class="Combatant_status"> </p>  
         `);
-
     }
 
     main(container) {
