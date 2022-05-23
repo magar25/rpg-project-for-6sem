@@ -4,7 +4,7 @@ class OverworldEvent {
         this.event = event;
     }
 
-    //to check if standing events finished
+    //for standing event
     stand(resolve) {
         const who = this.map.gameObjects[this.event.who];
         who.startBehavior({
@@ -25,7 +25,7 @@ class OverworldEvent {
         document.addEventListener("PersonStandComplete", completeHandler);
     }
 
-    //to check if walking events finished
+    //for walking event
     walk(resolve) {
 
         const who = this.map.gameObjects[this.event.who];
@@ -49,6 +49,7 @@ class OverworldEvent {
 
     }
 
+    // to display text message
     textMessage(resolve) {
 
         // to make NPCs face the hero while talking
@@ -64,6 +65,17 @@ class OverworldEvent {
         message.main(document.querySelector(".game-container"))
     }
 
+    //for Battle
+    battle(resolve) {
+        const battle = new Battle({
+            onComplete: () => {
+                resolve();
+            }
+        })
+        battle.main(document.querySelector(".game-container"));
+    }
+
+
     changeMap(resolve) {
 
         const sceneTransition = new SceneTransition();
@@ -73,9 +85,7 @@ class OverworldEvent {
 
             sceneTransition.fadeOut(); // we can see the new map after fadeout
         })
-
     }
-
 
     main() {
         return new Promise(resolve => {

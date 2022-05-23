@@ -90,20 +90,22 @@ class Overworld {
 
         this.startGameLoop(); // starts this loop when the game starts
 
-        // this.map.startCutscene([
+        this.map.startCutscene([
 
-        //     { type: "changeMap", map: "DemoRoom" },
 
-        //     //  setting up event when cutscene triggers
+            { type: "battle" },
+            // { type: "changeMap", map: "DemoRoom" },
 
-        //     // { who: "hero", type: "walk", direction: "down" },
-        //     // { who: "hero", type: "walk", direction: "down" },
-        //     // { who: "npcA", type: "walk", direction: "left" },
-        //     // { who: "npcA", type: "walk", direction: "up" },
-        //     // { who: "npcA", type: "stand", direction: "left", time: 200 },
-        //     // { who: "hero", type: "stand", direction: "right", time: 200 },
-        //     // { type: "textMessage", text: " HELLO HOW ARE YOU !" },
-        // ])
+            //  setting up event when cutscene triggers
+
+            // { who: "hero", type: "walk", direction: "down" },
+            // { who: "hero", type: "walk", direction: "down" },
+            // { who: "npcA", type: "walk", direction: "left" },
+            // { who: "npcA", type: "walk", direction: "up" },
+            // { who: "npcA", type: "stand", direction: "left", time: 200 },
+            // { who: "hero", type: "stand", direction: "right", time: 200 },
+            // { type: "textMessage", text: " HELLO HOW ARE YOU !" },
+        ])
 
 
     }
