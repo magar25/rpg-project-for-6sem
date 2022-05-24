@@ -13,13 +13,13 @@ window.Pizzas = {
     "s001": {
         name: "Slice Samurai",
         type: PizzaTypes.spicy,
-        scr: "/images/characters/pizzas/s001.png",
+        src: "/images/characters/pizzas/s001.png",
         icon: "/images/icons/spicy.png",
     },
     "v001": {
         name: "Call Me Kale",
         type: PizzaTypes.veggie,
-        scr: "/images/characters/pizzas/v001.png",
+        src: "/images/characters/pizzas/v001.png",
         icon: "/images/icons/veggie.png",
     },
     "f001": {
@@ -29,10 +29,10 @@ window.Pizzas = {
         icon: "/images/icons/fungi.png",
     },
     "c001": {
-        name: "Red Hot Chili ",
+        name: "frozen pizza",
         type: PizzaTypes.chill,
         src: "/images/characters/pizzas/c001.png",
-        icon: "/images/icons/chill.png"
-    }
+        icon: "/images/icons/chill.png",
+    },
 
 }

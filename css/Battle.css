@@ -6,6 +6,7 @@
     bottom: 0;
     /* for battle background */
     background-image: url(/images/maps/StreetBattle.png);
+    /* to fill the canvas */
     background-size: cover;
     image-rendering: pixelated;
 }

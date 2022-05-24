@@ -62,6 +62,9 @@
     display: none;
 }
 
+
+/* for pizzas name */
+
 .Combatant_name {
     position: absolute;
     left: -2px;
@@ -75,6 +78,9 @@
     padding-right: 2px;
     margin: 0;
 }
+
+
+/* types of pizza */
 
 .Combatant_type {
     position: absolute;
@@ -90,7 +96,7 @@
 .Combatant_life-container {
     position: absolute;
     left: 20px;
-    top: 20px;
+    top: 4px;
     width: 26px;
     height: 3px;
 }
@@ -152,4 +158,40 @@
 
 .Combatant_status[data-status="drop"] {
     background: purple;
+}
+
+.Pizza {
+    position: absolute;
+    transform: scale(2);
+    background: url(/images/characters/pizzas/pizza-shadow.png) no-repeat no-repeat;
+}
+
+
+/* placement for players pizza */
+
+.Pizza[data-team="player"] {
+    bottom: 73px;
+    left: 51px;
+}
+
+
+/* placement for enemys pizza */
+
+.Pizza[data-team="enemy"] {
+    top: 47px;
+    right: 100px;
+}
+
+
+/* hiding non active pizza */
+
+.Pizza[data-active="false"] {
+    opacity: 0;
+}
+
+
+/* showing active pizza */
+
+.Pizza[data-active="false"] {
+    opacity: 1;
 }

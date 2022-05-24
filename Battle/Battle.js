@@ -1,42 +1,52 @@
 class Battle {
     constructor() {
             this.combatants = {
-                "player1": new Combatant({
-                    ...Pizzas.s001,
-                    team: "player",
-                    hp: 50,
-                    maxHp: 50,
-                    xp: 0,
-                    level: 1,
-                    status: null,
-                }, this),
-                "enemy1": new Combatant({
-                    ...Pizzas.v001,
-                    team: "enemy",
-                    hp: 50,
-                    maxHp: 50,
-                    xp: 0,
-                    level: 1,
-                    status: null,
-                }, this),
-                "enemy2": new Combatant({
-                    ...Pizzas.f001,
-                    team: "enemy",
-                    hp: 50,
-                    maxHp: 50,
-                    xp: 0,
-                    level: 1,
-                    status: null,
-                }, this),
-                "enemy3": new Combatant({
-                    ...Pizzas.c001,
-                    team: "enemy",
-                    hp: 50,
-                    maxHp: 50,
-                    xp: 0,
-                    level: 1,
-                    status: null,
-                }, this),
+                    "player1": new Combatant({
+                        ...Pizzas.s001,
+                        team: "player",
+                        hp: 35,
+                        maxHp: 50,
+                        xp: 70,
+                        maxXp: 100,
+                        level: 1,
+                        status: null,
+                    }, this),
+                    "enemy1": new Combatant({
+                        ...Pizzas.v001,
+                        team: "enemy",
+                        hp: 20,
+                        maxHp: 50,
+                        xp: 50,
+                        maxXp: 100,
+                        level: 1,
+                        status: null,
+                    }, this),
+                    "enemy2": new Combatant({
+                        ...Pizzas.f001,
+                        team: "enemy",
+                        hp: 25,
+                        maxHp: 50,
+                        xp: 40,
+                        maxXp: 100,
+                        level: 1,
+                        status: null,
+                    }, this),
+                    "player2": new Combatant({
+                        ...Pizzas.c001,
+                        team: "player",
+                        hp: 25,
+                        maxHp: 50,
+                        xp: 40,
+                        maxXp: 100,
+                        level: 1,
+                        status: null,
+                    }, this),
+
+                }
+                // to show which pizza gets display on the screen first
+            this.activeCombatants = {
+                player: "player2",
+                enemy: "enemy2",
             }
         }
         //creating dynamic battle sprites for hero and enemy
@@ -58,6 +68,8 @@ class Battle {
     main(container) {
         this.createElement();
         container.appendChild(this.element);
+
+        //putting every thing form the combatant to battle
 
         Object.keys(this.combatants).forEach(key => {
             let combatant = this.combatants[key];

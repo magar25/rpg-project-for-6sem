@@ -6,6 +6,22 @@ class Combatant {
         this.battle = battle;
     }
 
+    get hpPercent() {
+        const percent = this.hp / this.maxHp * 100; // converting the max hp into percent
+        return percent > 0 ? percent : 0; // return 0 if the percent is less or equal to zero
+    }
+
+    get xpPercent() {
+        return this.xp / this.maxXp * 100; // converting the max xp into percent
+
+    }
+
+    // to know which one is active in battle
+    get isActive() {
+        return this.battle.activeCombatants[this.team] === this.id; //id is either player1/2... or enemy1/2..
+    }
+
+
     createElement() {
         this.hudElement = document.createElement("div");
         this.hudElement.classList.add("Combatant");
@@ -36,11 +52,46 @@ class Combatant {
 
         <p class="Combatant_status"> </p>  
         `);
+
+        this.pizzaElement = document.createElement("img");
+        this.pizzaElement.classList.add("Pizza");
+        this.pizzaElement.setAttribute("src", this.src); // src is defined in pizzas.js
+        // this.pizzaElement.setAttribute("alt", this.name); //
+        this.pizzaElement.setAttribute("data-team", this.team); // which team the pizza belongs to 
+
+        //reference for hp so we dont have to keep writing the code when the hp changes
+        this.hpFills = this.hudElement.querySelectorAll(".Combatant_life-container >rect");
+
+        //reference for xp so we dont have to keep writing the code when the xp changes
+        this.xpFills = this.hudElement.querySelectorAll(".Combatant_xp-container >rect");
     }
+
+    //changes to thigs like hp and exp bar , level , statue etc
+    update(changes = {}) {
+        //update everything incoming
+
+        Object.keys(changes).forEach(key => {
+            this[key] = changes[key]
+        });
+
+        this.hudElement.setAttribute("data-active", this.isActive); //active flag for the correct hud
+        this.pizzaElement.setAttribute("data-active", this.isActive); //active flag for the correct pizza
+
+        //update hp and exp percet fill
+        this.hpFills.forEach(rect => rect.style.width = `${this.hpPercent}%`); //% is just for comparision
+        this.xpFills.forEach(rect => rect.style.width = `${this.xpPercent}%`); //% is just for comparision
+
+        this.hudElement.querySelector(".Combatant_level").innerText = this.level; // for level on screen
+
+
+    }
+
 
     main(container) {
         this.createElement();
         container.appendChild(this.hudElement);
+        container.appendChild(this.pizzaElement);
+        this.update();
 
     }
 }
