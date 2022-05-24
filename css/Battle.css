@@ -10,10 +10,14 @@
     image-rendering: pixelated;
 }
 
+
+/* scalling the images */
+
 .Battle_hero,
 .Battle_enemy {
     position: absolute;
     transform: scale(2);
+    /* croping the images  */
     width: 32px;
     height: 32px;
     overflow: hidden;
@@ -26,6 +30,9 @@
     pointer-events: none;
 }
 
+
+/* hero placement on the map */
+
 .Battle_hero {
     bottom: 57px;
     left: 1px;
@@ -37,6 +44,9 @@
 .Battle_hero img {
     transform: translateY(-64px);
 }
+
+
+/* enemy placement on the map */
 
 .Battle_enemy {
     top: 42px;

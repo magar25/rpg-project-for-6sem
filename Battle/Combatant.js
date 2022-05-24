@@ -42,11 +42,5 @@ class Combatant {
         this.createElement();
         container.appendChild(this.hudElement);
 
-        Object.keys(this.combatants).forEach(key => {
-            let combatant = this.combatants[key];
-            combatant.id = key;
-            combatant.main(this.element);
-        })
-
     }
 }
