@@ -11,6 +11,16 @@ class Battle {
                         level: 1,
                         status: null,
                     }, this),
+                    "player2": new Combatant({
+                        ...Pizzas.c001,
+                        team: "player",
+                        hp: 25,
+                        maxHp: 50,
+                        xp: 40,
+                        maxXp: 100,
+                        level: 1,
+                        status: null,
+                    }, this),
                     "enemy1": new Combatant({
                         ...Pizzas.v001,
                         team: "enemy",
@@ -31,16 +41,7 @@ class Battle {
                         level: 1,
                         status: null,
                     }, this),
-                    "player2": new Combatant({
-                        ...Pizzas.c001,
-                        team: "player",
-                        hp: 25,
-                        maxHp: 50,
-                        xp: 40,
-                        maxXp: 100,
-                        level: 1,
-                        status: null,
-                    }, this),
+
 
                 }
                 // to show which pizza gets display on the screen first
@@ -72,10 +73,22 @@ class Battle {
         //putting every thing form the combatant to battle
 
         Object.keys(this.combatants).forEach(key => {
-            let combatant = this.combatants[key];
-            combatant.id = key;
-            combatant.main(this.element);
+                let combatant = this.combatants[key];
+                combatant.id = key;
+                combatant.main(this.element);
+            })
+            //for whose turn it is and what action it did
+        this.turnCycle = new TurnCycle({
+            battle: this,
+            onNewEvent: event => {
+                return new Promise(resolve => {
+                    const battleEvent = new BattleEvent(event, this) // passing battle(this)
+                    battleEvent.main(resolve);
+                })
+            }
         })
+
+        this.turnCycle.main();
 
     }
 

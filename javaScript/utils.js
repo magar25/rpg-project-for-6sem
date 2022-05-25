@@ -28,6 +28,16 @@ const utils = {
         if (direction === "up") { return "down" }
         return "up"
     },
+
+    //time to wait for certain second after attacking
+    wait(ms){
+        return new Promise(resolve =>{
+            setTimeout(()=>{
+                resolve()
+            },ms)
+        })
+    },
+
     //checking what the characters are doing
     emitEvent(name, detail) {
 

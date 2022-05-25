@@ -192,6 +192,6 @@
 
 /* showing active pizza */
 
-.Pizza[data-active="false"] {
+.Pizza[data-active="true"] {
     opacity: 1;
 }

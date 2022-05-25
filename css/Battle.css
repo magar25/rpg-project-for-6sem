@@ -53,3 +53,40 @@
     top: 42px;
     right: -1px;
 }
+
+
+/* animation */
+@keyframes battle-damage-blink {
+    to{
+        visibility: hidden;
+    }
+}
+
+.battle-damage-blink{
+    animation: battle-damage-blink 0.3s steps(2,start) infinite; /*steps to tougle the visibility on and off*/
+}
+
+
+/* animation for player attacking  */
+@keyframes battle-spin-right{
+    0%{transform: translate3d(0,0,0) rotate(0deg) scale(2)}
+    25%{transform: translate3d(150px,-25px,0) rotate(45deg) scale(2)}
+    100%{transform: translate3d(0,0,0) rotate(0deg) scale(2)}
+}
+
+/* speed of the animation */
+.battle-spin-right{
+    animation: battle-spin-right 0.8s;
+}
+
+/* animation for player atacking */
+@keyframes battle-spin-left{
+    0%{transform: translate3d(0,0,0) rotate(0deg) scale(2)}
+    25%{transform: translate3d(-130px,45px,0) rotate(45deg) scale(2)}
+    100%{transform: translate3d(0,0,0) rotate(0deg) scale(2)}
+}
+
+/* speed of the animation */
+.battle-spin-left{
+    animation: battle-spin-left 0.8s;
+}
