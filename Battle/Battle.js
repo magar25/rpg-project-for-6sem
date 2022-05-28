@@ -9,7 +9,10 @@ class Battle {
                         xp: 70,
                         maxXp: 100,
                         level: 1,
-                        status: null,
+                        status: {
+                            type:"saucy",
+                            expiresIn:3,
+                        },
                     }, this),
                     "player2": new Combatant({
                         ...Pizzas.c001,
@@ -19,7 +22,10 @@ class Battle {
                         xp: 40,
                         maxXp: 100,
                         level: 1,
-                        status: null,
+                        status: {
+                            type:"saucy",
+                            expiresIn:1,
+                        },
                     }, this),
                     "enemy1": new Combatant({
                         ...Pizzas.v001,

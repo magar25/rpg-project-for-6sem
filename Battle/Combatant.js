@@ -83,9 +83,46 @@ class Combatant {
 
         this.hudElement.querySelector(".Combatant_level").innerText = this.level; // for level on screen
 
+        //update status
+        const statusElement = this.hudElement.querySelector(".Combatant_status");
+        if(this.status){
+            statusElement.innerText=this.status.type;
+            statusElement.style.display="block";//display the name
+
+        }else{
+            statusElement.innerText="";
+            statusElement.style.display="none;"
+        }
 
     }
 
+    // implementing what saucy status do 
+    getPostEvents(){
+        if(this.status?.type==="saucy"){
+            return[
+                {type:"textMessage",text:"feelin' saucy!"},
+                {type:"stateChange",recover:5,onCaster:true}
+            ]
+        }
+        return[];
+    }
+
+    //making so that the status only last certain turn
+    decrementStatus(){
+        if(this.status?.expiresIn>0){
+            this.status.expiresIn -=1;
+            if(this.status.expiresIn===0){
+                this.update({
+                    status:null
+                })
+                return{
+                    type:"textMessage",
+                    text:"Status expired!"
+                }
+            }
+        }
+        return null; 
+    }
 
     main(container) {
         this.createElement();

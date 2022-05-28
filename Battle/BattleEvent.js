@@ -9,8 +9,9 @@ class BattleEvent {
 
         const text = this.event.text
             .replace("{CASTER}", this.event.caster ?.name) // replace caster with player/enemy name
-            .replace("{TARGET}", this.event.target ?.name) // replace target with player/enemy name
-            .replace("{ACTION}", this.event.action ?.name) // replace ation name
+            .replace("{TARGET}", this.event.target ?.name) // show the name of the targeted player
+            .replace("{ACTION}", this.event.action ?.name) // show performed actions name
+            .replace("{STATUS}", this.event.status ?.name) // show the name of the staus
 
         const message = new TextMessage({
             text,
@@ -23,7 +24,7 @@ class BattleEvent {
 
 
     async stateChange(resolve){
-        const{caster,target,damage}=this.event;
+        const{caster,target,damage,recover}=this.event;
         if(damage){
         //modify the targets to have less hp after getting attacked
             target.update({
@@ -33,6 +34,16 @@ class BattleEvent {
         //start blinking when taking damage
         target.pizzaElement.classList.add("battle-damage-blink");
 
+        }
+        if (recover){
+            const who = this.event.onCaster ? caster : targer;
+            let newHp=who.hp+recover;
+            if(newHp>who.maxHP){
+                newHp= who.maxHP;
+            }
+            who.update({
+                hp:newHp
+            })
         }
 
         //wait a little bit

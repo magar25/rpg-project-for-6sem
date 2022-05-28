@@ -35,6 +35,25 @@ class TurnCycle {
             }
             await this.onNewEvent(event);
         }
+        //check for post events(do things after your original tour sumbission)
+        const postEvents = caster.getPostEvents();
+        for (let i=0;i<postEvents.length;i++){
+            const event={
+                ...postEvents[i],
+                submission,
+                action:submission.action,
+                caster,
+                target:submission.target,
+            }
+            await this.onNewEvent(event);
+        }
+
+        //checkfor status expire
+        const expiredEvent = caster.decrementStatus();
+        if(expiredEvent){
+            await this.onNewEvent(expiredEvent)
+        }
+        
         // to check turn order
         this.currentTeam = this.currentTeam === "player" ? "enemy" : "player";
         this.turn();
