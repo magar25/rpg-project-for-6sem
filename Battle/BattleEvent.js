@@ -24,7 +24,9 @@ class BattleEvent {
 
 
     async stateChange(resolve){
-        const{caster,target,damage,recover}=this.event;
+        const{caster,target,damage,recover,status,action}=this.event;
+        let who = this.event.onCaster ? caster : target; 
+
         if(damage){
         //modify the targets to have less hp after getting attacked
             target.update({
@@ -36,7 +38,6 @@ class BattleEvent {
 
         }
         if (recover){
-            const who = this.event.onCaster ? caster : targer;
             let newHp=who.hp+recover;
             if(newHp>who.maxHP){
                 newHp= who.maxHP;
@@ -44,6 +45,17 @@ class BattleEvent {
             who.update({
                 hp:newHp
             })
+        }
+        if(status){
+            who.update({
+                status:{...status}
+
+            })
+            }
+            if(status===null){
+                who.update({
+                    status:null
+                })
         }
 
         //wait a little bit
@@ -59,6 +71,7 @@ class BattleEvent {
         const menu = new SubmissionMenu({
             caster: this.event.caster,
             enemy: this.event.enemy,
+            items:this.battle.items,
             onComplete: submission => {
                 //submisson {what move to use and who to use it on }
                 resolve(submission)

@@ -96,6 +96,16 @@ class Combatant {
 
     }
 
+    //implementing what clumsy status do 
+    getReplacedEvents(originalEvents){
+        if(this.status?.type ==="clumsy" && utils.randomFromArray([false,true,false])){
+            return[
+                {type:"textMessage",text:`${this.name} flops over!`},
+            ]
+        }
+        return originalEvents;
+    }
+
     // implementing what saucy status do 
     getPostEvents(){
         if(this.status?.type==="saucy"){

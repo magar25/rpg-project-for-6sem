@@ -9,10 +9,8 @@ class Battle {
                         xp: 70,
                         maxXp: 100,
                         level: 1,
-                        status: {
-                            type:"saucy",
-                            expiresIn:3,
-                        },
+                        status: null,
+                        isPlayerControlled:true,
                     }, this),
                     "player2": new Combatant({
                         ...Pizzas.c001,
@@ -22,10 +20,8 @@ class Battle {
                         xp: 40,
                         maxXp: 100,
                         level: 1,
-                        status: {
-                            type:"saucy",
-                            expiresIn:1,
-                        },
+                        status: null,
+                        isPlayerControlled:true,
                     }, this),
                     "enemy1": new Combatant({
                         ...Pizzas.v001,
@@ -55,6 +51,12 @@ class Battle {
                 player: "player2",
                 enemy: "enemy2",
             }
+            this.items=[
+                {actionId:"item_recoverStatus", instanceId:"p1",team:"player"},
+                {actionId:"item_recoverStatus", instanceId:"p2",team:"player"},
+                {actionId:"item_recoverStatus", instanceId:"p3",team:"enemy"},
+                {actionId:"item_recoverHp", instanceId:"p4",team:"player"},
+            ]
         }
         //creating dynamic battle sprites for hero and enemy
     createElement() {

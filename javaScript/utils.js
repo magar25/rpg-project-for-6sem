@@ -38,6 +38,10 @@ const utils = {
         })
     },
 
+    randomFromArray(array){
+        return array [Math.floor(Math.random()*array.length)]
+    },
+
     //checking what the characters are doing
     emitEvent(name, detail) {
 

@@ -90,3 +90,41 @@
 .battle-spin-left{
     animation: battle-spin-left 0.8s;
 }
+
+/* container for the glob */
+.glob-orb{
+    position: absolute;
+    width: 32px;
+    height: 32px;
+}
+
+/* traveling for right to left */
+@keyframes battle-glob-right{
+    0%{transform: translate3d(0,0,0) scale(0.5); opacity: 1;}
+    50%{transform: translate3d(10px,-80px,0) scale(1); opacity: 1;}
+    80%{transform: translate3d(149px,-47px,0) scale(1); opacity: 1;}
+    100%{transform: translate3d(149px,-47px,0) scale(3); opacity: 0;}
+    
+}
+
+/* starting positiong and speed */
+.Battle-glob-right{
+    left:70px;
+    top: 109px;
+    animation: battle-glob-right 1s forwards;
+}
+
+/* traveling for left to right */
+@keyframes Battle-glob-left{
+    0%{transform: translate3d(0,0,0) scale(0.5); opacity: 1;}
+    50%{transform: translate3d(-10px,-50px,0) scale(1); opacity: 1;}
+    80%{transform: translate3d(-175px,47px,0) scale(1); opacity: 1;}
+    100%{transform: translate3d(-175px,47px,0) scale(3); opacity: 0;}
+}
+
+/* starting positiong and speed */
+.Battle-glob-left{
+    left:227px;
+    top:56px;
+    animation: battle-glob-left 1s forwards;
+}

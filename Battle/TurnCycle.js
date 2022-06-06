@@ -24,7 +24,15 @@ class TurnCycle {
             enemy
 
         })
-        const resultingEvents = submission.action.success;
+
+        //to decrese the no of item after sucessfully using it 
+        if(submission.instanceId){
+            this.battle.items=this.battle.items.filter(i=>i.instanceId !==submission.instanceId);
+        }
+
+
+        //check for the negative status effect before attacking 
+        const resultingEvents = caster.getReplacedEvents(submission.action.success);
         for (let i = 0; i < resultingEvents.length; i++) {
             const event = {
                 ...resultingEvents[i],
@@ -63,10 +71,10 @@ class TurnCycle {
 
 
     async main() {
-        await this.onNewEvent({
-            type: "textMessage",
-            text: "The battle is starting!"
-        })
+        // await this.onNewEvent({
+        //     type: "textMessage",
+        //     text: "The battle is starting!"
+        // })
 
         //Start the first turn!
         this.turn();

@@ -36,7 +36,7 @@ window.Pizzas = {
         type: PizzaTypes.chill,
         src: "/images/characters/pizzas/c001.png",
         icon: "/images/icons/chill.png",
-        actions: ["damage1"],
+        actions: ["saucyStatus","clumsyStatus","damage1"],
     },
 
 }
