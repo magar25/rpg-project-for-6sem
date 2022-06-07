@@ -19,7 +19,7 @@ class Combatant {
 
     // to know which one is active in battle
     get isActive() {
-        return this.battle.activeCombatants[this.team] === this.id; //id is either player1/2... or enemy1/2..
+        return this.battle?.activeCombatants[this.team] === this.id; //id is either player1/2... or enemy1/2..
     }
 
     //dynamically providing exp to player

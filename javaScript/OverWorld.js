@@ -80,6 +80,9 @@ class Overworld {
     }
 
     main() {
+        this.hud= new Hud();
+        this.hud.main(document.querySelector(".game-container"));
+
         this.startMap(window.OverworldMaps.DemoRoom);
 
         this.bindActionInput();
