@@ -80,7 +80,7 @@ class Overworld {
     }
 
     main() {
-        this.startMap(window.OverworldMaps.Kitchen);
+        this.startMap(window.OverworldMaps.DemoRoom);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
@@ -93,7 +93,7 @@ class Overworld {
         this.map.startCutscene([
 
 
-            { type: "battle" },
+            // { type: "battle" , enemyId:"beth" },
             // { type: "changeMap", map: "DemoRoom" },
 
             //  setting up event when cutscene triggers

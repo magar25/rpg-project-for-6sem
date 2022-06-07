@@ -125,6 +125,30 @@ class BattleEvent {
 
     }
 
+    //provide exp to the active player 
+    giveXp(resolve){
+        let amount= this.event.xp;
+        const {combatant} =this.event;
+        const step =()=>{
+            if(amount>0){
+                amount-=1;
+                combatant.xp +=1;
+
+                 //Check if we've hit level up point
+        if (combatant.xp === combatant.maxXp) {
+            combatant.xp = 0;   //setting the exp back to 0
+            combatant.maxXp += 25; // setting next max exp poing
+            combatant.level += 1; //increasing the lvl by 1
+          }
+
+                combatant.update();
+                requestAnimationFrame(step);
+                return;
+            }
+            resolve();
+        }
+        requestAnimationFrame(step);
+    }
 
     animation(resolve){
         const fn=BattleAnimations[this.event.animation];
