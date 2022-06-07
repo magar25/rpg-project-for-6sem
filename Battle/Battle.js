@@ -78,13 +78,27 @@ class Battle {
         this.createElement();
         container.appendChild(this.element);
 
+        this.playerTeam = new Team("player","Hero");
+        this.enemyTeam = new Team("enemy","Bully");
+
         //putting every thing form the combatant to battle
 
         Object.keys(this.combatants).forEach(key => {
                 let combatant = this.combatants[key];
                 combatant.id = key;
                 combatant.main(this.element);
+
+                //add to the correct team
+                if(combatant.team ==="player"){
+                    this.playerTeam.combatants.push(combatant);
+                }else if(combatant.team==="enemy"){
+                    this.enemyTeam.combatants.push(combatant);
+                }
             })
+
+            this.playerTeam.main(this.element);
+            this.enemyTeam.main(this.element);
+
             //for whose turn it is and what action it did
         this.turnCycle = new TurnCycle({
             battle: this,

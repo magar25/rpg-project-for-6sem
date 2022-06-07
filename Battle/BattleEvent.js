@@ -60,6 +60,10 @@ class BattleEvent {
 
         //wait a little bit
         await utils.wait(600);
+
+            //update to check for dead and active team
+        this.battle.playerTeam.update();
+        this.battle.enemyTeam.update();
         
         //stop blinking
         target.pizzaElement.classList.remove("battle-damage-blink");
@@ -112,6 +116,10 @@ class BattleEvent {
         replacement.update(); // new member should replace 
         await utils.wait(400);//setting the timer so we can see the swap happen
 
+         //update to check for dead and active team
+        this.battle.playerTeam.update();
+        this.battle.enemyTeam.update();
+        
         resolve();
 
 
