@@ -1,10 +1,12 @@
 class SubmissionMenu {
 
-    constructor({ caster, enemy, onComplete,items }) {
+    constructor({ caster, enemy, onComplete,items,replacements }) {
         this.caster = caster;
         this.enemy = enemy;
+        this.replacements=replacements;
         this.onComplete = onComplete;
 
+            //adding the items to the item menu
         let quantityMap = {};
         items.forEach(item => {
           if (item.team === caster.team) {
@@ -64,7 +66,7 @@ class SubmissionMenu {
                     description:"Change to another pizza",
                     handler:()=>{
                         //see pizza options
-                        this.keyboardMenu.setOptions(this.getPages().swap)
+                        this.keyboardMenu.setOptions(this.getPages().replacements)
 
                     }
                 },
@@ -100,11 +102,34 @@ class SubmissionMenu {
                   }
                 }),
                 backOption
-              ]
+              ],
+              //replacement for team mates
+              replacements:[
+                  ...this.replacements.map(replacement=>{
+                    return{
+                        label: replacement.name,
+                        description:replacement.description,
+                        handler:() =>{
+                            //pizzas ready to be swap
+                            this.menuSubmitReplacement(replacement)
+                        }
+                    }
+                  }),
+                  backOption
+              ],
         }
     }
 
-    //
+    menuSubmitReplacement(replacement){
+        //end our keyboard even
+        this.keyboardMenu?.end();
+
+        //complete battle event
+        this.onComplete({
+            replacement,
+        })
+    }
+    
     menuSubmit(action, instanceId=null) {
 
         this.keyboardMenu?.end(); //end the keyboardMenu binding

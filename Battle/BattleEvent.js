@@ -8,10 +8,10 @@ class BattleEvent {
     textMessage(resolve) {
 
         const text = this.event.text
-            .replace("{CASTER}", this.event.caster ?.name) // replace caster with player/enemy name
-            .replace("{TARGET}", this.event.target ?.name) // show the name of the targeted player
-            .replace("{ACTION}", this.event.action ?.name) // show performed actions name
-            .replace("{STATUS}", this.event.status ?.name) // show the name of the staus
+            .replace("{CASTER}", this.event.caster?.name) // replace caster with player/enemy name
+            .replace("{TARGET}", this.event.target?.name) // show the name of the targeted player
+            .replace("{ACTION}", this.event.action?.name) // show performed actions name
+            .replace("{STATUS}", this.event.status?.name) // show the name of the staus
 
         const message = new TextMessage({
             text,
@@ -68,16 +68,53 @@ class BattleEvent {
 
     //putting the menu on screen
     submissionMenu(resolve) {
+        const {caster}=this.event;
         const menu = new SubmissionMenu({
             caster: this.event.caster,
             enemy: this.event.enemy,
             items:this.battle.items,
+            //swap the team mate with the alive one
+            replacements: Object.values(this.battle.combatants).filter(c => {
+                return c.id !== caster.id && c.team === caster.team && c.hp > 0
+            }),
             onComplete: submission => {
                 //submisson {what move to use and who to use it on }
                 resolve(submission)
             }
         })
         menu.main(this.battle.element); //showing in battle container
+    }
+
+    //resolve when team dies then swapping 
+    replacementMenu(resolve){
+        const menu= new ReplacementMenu({
+            replacements:Object.values(this.battle.combatants).filter(c=>{
+                return c.team=== this.event.team && c.hp >0
+            }),
+            onComplete: replacement=>{
+                resolve(replacement)
+            }
+        })
+        menu.main(this.battle.element)
+    }
+    //resolve replacement event
+    async replace(resolve) {
+        const {replacement} = this.event;
+
+        //clear out the old combatant
+        const prevCombatant = this.battle.combatants[this.battle.activeCombatants[replacement.team]];
+        this.battle.activeCombatants[replacement.team] = null;//setting active member to be null so we can swap
+        prevCombatant.update(); //active member should dissapear
+        await utils.wait(400); //setting the timer so we can see the swap happen
+
+        // in with the new team mate if avilable
+        this.battle.activeCombatants[replacement.team] = replacement.id;
+        replacement.update(); // new member should replace 
+        await utils.wait(400);//setting the timer so we can see the swap happen
+
+        resolve();
+
+
     }
 
 

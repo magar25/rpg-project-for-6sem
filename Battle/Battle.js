@@ -36,7 +36,7 @@ class Battle {
                     "enemy2": new Combatant({
                         ...Pizzas.f001,
                         team: "enemy",
-                        hp: 25,
+                        hp: 2,
                         maxHp: 50,
                         xp: 40,
                         maxXp: 100,
