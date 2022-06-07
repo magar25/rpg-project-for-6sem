@@ -38,6 +38,7 @@ const utils = {
         })
     },
 
+    //select randomly form an array to set some randomness 
     randomFromArray(array){
         return array [Math.floor(Math.random()*array.length)]
     },

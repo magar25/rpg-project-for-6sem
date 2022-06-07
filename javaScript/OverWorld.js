@@ -43,20 +43,39 @@ class Overworld {
             //draw upper layer
             this.map.drawUpperImage(this.ctx, cameraPerson);
 
-            //console.log("refresh");
+            if(!this.map.isPaused){
             requestAnimationFrame(() => {
                 step(); //calls step() when new frame starts 
             })
+        }
         }
         step();
     }
 
     // check if he is talking to NPCs
     bindActionInput() {
+        //adding event listener for enter key 
         new keyPressListener("Enter", () => {
 
             //Is there a person to talk to???
             this.map.checkForActionCutscene()
+        })
+
+        //adding event listener for Space key 
+        new keyPressListener("Space", () => {
+
+            //Is there a person to talk to???
+            this.map.checkForActionCutscene()
+        })
+
+        //adding event listener for esc key
+
+        new keyPressListener("Escape",()=>{
+            if(!this.map.isCutscenePlaying){
+                this.map.startCutscene([
+                    {type:"pause"}
+                ])
+            }
         })
     }
 

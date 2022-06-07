@@ -13,6 +13,13 @@ class Hud{
 
         //creating hud for pizzas in the party
     createElement(){
+
+        //clean the Hud
+        if(this.element){
+            this.element.remove(); // removing old element
+            this.scoreboards=[]; // resetting the scoreboard to empty
+        }
+
         this.element=document.createElement("div");
         this.element.classList.add("Hud");
 
@@ -40,6 +47,12 @@ class Hud{
 
         document.addEventListener("PlayerStateUpdated",() =>{
             this.update();
+        })
+
+
+        document.addEventListener("LineupChanged",()=>{
+            this.createElement();
+            container.appendChild(this.element);
         })
     }
 }

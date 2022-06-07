@@ -31,7 +31,12 @@ class TextMessage {
         //adding event listener to the enter key 
         this.actionListener = new keyPressListener("Enter", () => {
             this.done();
-        })
+        });
+
+            //adding event listener to the spacem key 
+        this.actionListener = new keyPressListener("Space", () => {
+            this.done();
+        });
     }
 
     //method for done

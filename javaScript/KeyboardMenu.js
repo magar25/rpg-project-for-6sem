@@ -1,9 +1,10 @@
 class KeyboardMenu{
-    constructor(){
+    constructor(config={}){
         this.options=[];//set by the updater method
         this.up=null;
         this.down=null;
         this.prevFocus=null;
+        this.descriptionContainer = config.descriptionContainer || null;
     }
 
     setOptions(options){
@@ -75,7 +76,7 @@ class KeyboardMenu{
 
     main(container){
         this.createElement();
-        container.appendChild(this.descriptionElement);
+        (this.descriptionContainer ||container).appendChild(this.descriptionElement);
         container.appendChild(this.element);
 
         //to select upper option in Menu

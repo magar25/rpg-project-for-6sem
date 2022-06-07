@@ -65,6 +65,19 @@ class OverworldEvent {
         message.main(document.querySelector(".game-container"))
     }
 
+
+    changeMap(resolve) {
+
+        const sceneTransition = new SceneTransition();
+        sceneTransition.main(document.querySelector(".game-container"), () => {
+            this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
+            resolve();
+
+            sceneTransition.fadeOut(); // we can see the new map after fadeout
+        })
+    }
+
+
     //for Battle
     battle(resolve) {
         const battle = new Battle({
@@ -77,15 +90,21 @@ class OverworldEvent {
     }
 
 
-    changeMap(resolve) {
+    //for pause menu
+    pause (resolve){
+        
+        this.map.isPaused=true; // pause the game
 
-        const sceneTransition = new SceneTransition();
-        sceneTransition.main(document.querySelector(".game-container"), () => {
-            this.map.overworld.startMap(window.OverworldMaps[this.event.map]);
-            resolve();
-
-            sceneTransition.fadeOut(); // we can see the new map after fadeout
-        })
+        // for menu
+        const menu = new PauseMenu({
+            onComplete:() =>{
+                resolve();
+                this.map.isPaused=false; //unpause the game
+                this.map.overworld.startGameLoop();
+            }
+        });
+        menu.main(document.querySelector(".game-container"));
+        
     }
 
     main() {

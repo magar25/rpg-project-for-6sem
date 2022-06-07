@@ -13,6 +13,7 @@ class OverworldMap {
         this.upperImage.src = config.upperSrc;
 
         this.isCutscenePlaying = false; // for cutscenes
+        this.isPaused=false;
 
 
     }
