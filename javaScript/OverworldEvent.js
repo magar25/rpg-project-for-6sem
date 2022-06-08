@@ -82,8 +82,8 @@ class OverworldEvent {
     battle(resolve) {
         const battle = new Battle({
             enemy: Enemies[this.event.enemyId],
-            onComplete: () => {
-                resolve();
+            onComplete: (didWin) => {
+                resolve(didWin ? "WON_BATTLE" : "LOST_BATTLE");
             }
         })
         battle.main(document.querySelector(".game-container"));
@@ -106,6 +106,14 @@ class OverworldEvent {
         menu.main(document.querySelector(".game-container"));
         
     }
+
+
+    //story flag to know which point in the game we are
+    addStoryFlag(resolve){
+        window.playerState.storyFlags[this.event.flag]=true;
+        resolve();
+    }
+
 
     main() {
         return new Promise(resolve => {

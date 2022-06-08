@@ -62,7 +62,10 @@ class OverworldMap {
                 event: events[i],
                 map: this,
             })
-            await eventHandler.main(); //wait for each event to complete
+           const result = await eventHandler.main(); //wait for each event to complete
+           if(result ==="LOST_BATTLE"){
+               break; // if the player looses the battle the cutscene breaks and wont move faward
+           }
         }
 
         this.isCutscenePlaying = false;
@@ -83,9 +86,15 @@ class OverworldMap {
         const match = Object.values(this.gameObjects).find(object => {
             return `${object.x},${object.y}` === `${nextCoords.x},${nextCoords.y}`
         });
-        console.log({ match });
+      //  console.log({ match });
         if (!this.isCutscenePlaying && match && match.talking.length) {
-            this.startCutscene(match.talking[0].events) // defaulting to the first one we find
+            const relevantScenario = match.talking.find(scenario =>{
+                return(scenario.required || []).every(sf=>{
+                    return playerState.storyFlags[sf]
+                })
+            })
+            
+           relevantScenario && this.startCutscene(relevantScenario.events) // defaulting to the first one we find
         }
     }
 
@@ -139,20 +148,26 @@ window.OverworldMaps = { //object of all the maps in the game
                     { type: "stand", direction: "right", time: 1200 },
                     { type: "stand", direction: "up", time: 300 },
                 ],
-                talking: [{
+                talking: [
+                    {
+                        required :["TALKED_TO_ERIO"],
+                        events: [
+                            { type: "textMessage", text: " Isn't Erio the coolest? !", faceHero :"npcA" },
+                        ]
+                    },
+                    {
+                    
                         events: [
 
-                            { type: "textMessage", text: " I'm busy.... !", faceHero: "npcA" },
+                            { type: "textMessage", text: " I am going to cruch you !!!", faceHero: "npcA" },
                             { type: "battle" , enemyId:"beth" },
-                           { type: "textMessage", text: " Go away !" },
+                            { type: "addStoryFlag", flag: "DEFEATED_BETH" },
+                            { type: "textMessage", text: " I was sure I was gonna win !!!", faceHero: "npcA" },
+                          // { type: "textMessage", text: " Go away !" },
                             // { who: "hero", type: "walk", direction: "up" }
                         ]
                     },
-                    // {
-                    //     events: [
-                    //         { type: "textMessage", text: " how are you !" }
-                    //     ]
-                    // }
+                   
                 ]
             }),
             npcB: new Person({
@@ -163,7 +178,8 @@ window.OverworldMaps = { //object of all the maps in the game
                     {
                         events:[
                             { type: "textMessage", text: "Bahahahah...!", faceHero: "npcB" },
-                            { type: "battle" , enemyId:"erio" },
+                            { type: "addStoryFlag", flag: "TALKED_TO_ERIO" },
+                          //  { type: "battle" , enemyId:"erio" },
                         ]
                     }
                 ]
