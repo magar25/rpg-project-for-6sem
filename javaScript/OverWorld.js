@@ -102,7 +102,14 @@ class Overworld {
         this.hud= new Hud();
         this.hud.main(document.querySelector(".game-container"));
 
-        this.startMap(window.OverworldMaps.DemoRoom);
+      this.startMap(window.OverworldMaps.DemoRoom);
+      //  this.startMap(window.OverworldMaps.Kitchen);
+      // this.startMap(window.OverworldMaps.DiningRoom);
+     // this.startMap(window.OverworldMaps.GreenKitchen);
+      // this.startMap(window.OverworldMaps.PizzaShop);
+       //this.startMap(window.OverworldMaps.Street);
+     //this.startMap(window.OverworldMaps.StreetNorth);
+      
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
