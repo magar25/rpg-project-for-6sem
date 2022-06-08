@@ -114,6 +114,19 @@ class OverworldEvent {
         resolve();
     }
 
+    //for crafting
+
+    craftingMenu(resolve){
+        const menu= new CraftingMenu({
+            pizzas: this.event.pizzas,
+
+            onComplete:() =>{
+                resolve();
+            }
+        })
+        menu.main(document.querySelector(".game-container"));
+    }
+
 
     main() {
         return new Promise(resolve => {

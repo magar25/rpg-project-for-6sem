@@ -182,22 +182,64 @@ window.OverworldMaps = { //object of all the maps in the game
                           //  { type: "battle" , enemyId:"erio" },
                         ]
                     }
+                ],
+                behaviorLoop: [
+                    { type: "stand", direction: "right", time: 1000 },
+                    { type: "stand", direction: "down", time: 800 },
+                    { type: "stand", direction: "left", time: 1200 },
+                    { type: "stand", direction: "down", time: 1500 },
+
                 ]
-            //     behaviorLoop: [
-            //         { type: "stand", direction: "right", time: 1000 },
-            //         { type: "stand", direction: "down", time: 800 },
-            //         { type: "stand", direction: "left", time: 1200 },
-            //         { type: "stand", direction: "down", time: 1500 },
-
-            //     ]
              }),
-
+             pizzaStone: new PizzaStone({
+                x: utils.withGrid(2),
+                y: utils.withGrid(7),
+                storyFlag: "USED_PIZZA_STONE",
+                pizzas: ["v001", "f001"],
+              }),
         },
         walls: {
+            //for table
             [utils.asGridCoord(7, 6)]: true,
             [utils.asGridCoord(8, 6)]: true,
             [utils.asGridCoord(7, 7)]: true,
             [utils.asGridCoord(8, 7)]: true,
+            //buttom wall
+            [utils.asGridCoord(10,10)]: true,
+            [utils.asGridCoord(9, 10)]: true,
+            [utils.asGridCoord(8, 10)]: true,
+            [utils.asGridCoord(7, 10)]: true,
+            [utils.asGridCoord(6, 10)]: true,
+            [utils.asGridCoord(4, 10)]: true,
+            [utils.asGridCoord(3, 10)]: true,
+            [utils.asGridCoord(2, 10)]: true,
+            [utils.asGridCoord(1, 10)]: true,
+            //right wall
+            [utils.asGridCoord(11, 9)]: true,
+            [utils.asGridCoord(11, 8)]: true,
+            [utils.asGridCoord(11, 7)]: true,
+            [utils.asGridCoord(11, 6)]: true,
+            [utils.asGridCoord(11, 5)]: true,
+            [utils.asGridCoord(11, 4)]: true,
+            //top wall
+            [utils.asGridCoord(10, 3)]: true,
+            [utils.asGridCoord(9, 3)]: true,
+            [utils.asGridCoord(8, 4)]: true,
+            [utils.asGridCoord(6, 4)]: true,
+            [utils.asGridCoord(5, 3)]: true,
+            [utils.asGridCoord(4, 3)]: true,
+            [utils.asGridCoord(3, 3)]: true,
+            [utils.asGridCoord(2, 3)]: true,
+            [utils.asGridCoord(1, 3)]: true,
+            //left wall
+            [utils.asGridCoord(0, 9)]: true,
+            [utils.asGridCoord(0, 8)]: true,
+            [utils.asGridCoord(0, 7)]: true,
+            [utils.asGridCoord(0, 6)]: true,
+            [utils.asGridCoord(0, 5)]: true,
+            [utils.asGridCoord(0, 4)]: true,
+            
+           
         },
 
         //trigger the following cutscene if hero walk in certain coorindate 
