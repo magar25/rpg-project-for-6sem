@@ -5,6 +5,33 @@ window.Actions = {
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
             { type: "animation", animation: "spin" },
+            { type: "stateChange", damage: 5 },
+        ]
+    },
+    damage2: {
+        name: "Slam!",
+        description:"Slam the dough down hard",
+        success: [
+            { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
+            { type: "animation", animation: "spin" },
+            { type: "stateChange", damage:  6},
+        ]
+    },
+    damage3: {
+        name: "slash!",
+        description:"Cut the pizza into equal parts",
+        success: [
+            { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
+            { type: "animation", animation: "spin" },
+            { type: "stateChange", damage: 8},
+        ]
+    },
+    damage4: {
+        name: "Chomp!",
+        description:"Eat it all",
+        success: [
+            { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
+            { type: "animation", animation: "spin" },
             { type: "stateChange", damage: 10 },
         ]
     },
@@ -18,7 +45,7 @@ window.Actions = {
         ]
     },
     SupersaucyStatus: {
-        name: "Super Tomato Squeeze !!!!!",
+        name: "Super Tomato Squeeze!!",
         description:"Recover HP over long period of time ",
         targetType:"friendly",
         success: [

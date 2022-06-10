@@ -17,7 +17,7 @@ window.Pizzas = {
         type: PizzaTypes.spicy,
         src: "/images/characters/pizzas/s001.png",
         icon: "/images/icons/spicy.png",
-        actions: ["saucyStatus","clumsyStatus","damage1"],
+        actions: ["damage1","damage4","SupersaucyStatus","clumsyStatus",],
     },
     "s002": {
         name: "Flame On",
@@ -25,7 +25,7 @@ window.Pizzas = {
         type: PizzaTypes.spicy,
         src: "/images/characters/pizzas/s002.png",
         icon: "/images/icons/spicy.png",
-        actions: ["damage1"],
+        actions: ["damage1","damage2","saucyStatus"],
     },
     "s003": {
         name: "Dry Heat",
@@ -33,7 +33,7 @@ window.Pizzas = {
         type: PizzaTypes.spicy,
         src: "/images/characters/pizzas/s003.png",
         icon: "/images/icons/spicy.png",
-        actions: ["damage1"],
+        actions: ["damage1",,"damage3","clumsyStatus"],
     },
 
     //veggie
@@ -43,7 +43,7 @@ window.Pizzas = {
         type: PizzaTypes.veggie,
         src: "/images/characters/pizzas/v001.png",
         icon: "/images/icons/veggie.png",
-        actions: ["damage1"],
+        actions: ["damage1",,"damage3","clumsyStatus"],
     },
     "v002": {
         name: "Bro-broccoli",
@@ -51,7 +51,7 @@ window.Pizzas = {
         type: PizzaTypes.veggie,
         src: "/images/characters/pizzas/v002.png",
         icon: "/images/icons/veggie.png",
-        actions: ["damage1"],
+        actions: ["damage1","damage2","saucyStatus"],
     },
     "v003": {
         name: "Aubergine",
@@ -59,7 +59,7 @@ window.Pizzas = {
         type: PizzaTypes.veggie,
         src: "/images/characters/pizzas/v003.png",
         icon: "/images/icons/veggie.png",
-        actions: ["damage1"],
+        actions: ["damage2",,"damage3","clumsyStatus"],
     },
 
     //fungai
@@ -69,7 +69,7 @@ window.Pizzas = {
         type: PizzaTypes.fungi,
         src: "/images/characters/pizzas/f001.png",
         icon: "/images/icons/fungi.png",
-        actions: ["damage1"],
+        actions: ["damage3","damage2","saucyStatus"],
     },
     "f002": {
         name: "Oyster Shroom",
@@ -77,7 +77,7 @@ window.Pizzas = {
         type: PizzaTypes.fungi,
         src: "/images/characters/pizzas/f002.png",
         icon: "/images/icons/fungi.png",
-        actions: ["damage1"],
+        actions: ["damage2",,"damage3","clumsyStatus"],
     },
     "f003": {
         name: "Cremini Bisporus",
@@ -85,7 +85,7 @@ window.Pizzas = {
         type: PizzaTypes.fungi,
         src: "/images/characters/pizzas/f003.png",
         icon: "/images/icons/fungi.png",
-        actions: ["damage1"],
+        actions: ["damage1","damage3","saucyStatus"],
     },
 
     //chill
@@ -95,7 +95,7 @@ window.Pizzas = {
         type: PizzaTypes.chill,
         src: "/images/characters/pizzas/c001.png",
         icon: "/images/icons/chill.png",
-        actions: ["saucyStatus","clumsyStatus","damage1"],
+        actions: ["saucyStatus","damage3","damage1"],
     },
     "c002": {
         name: "Udi's",
@@ -103,7 +103,7 @@ window.Pizzas = {
         type: PizzaTypes.chill,
         src: "/images/characters/pizzas/c002.png",
         icon: "/images/icons/chill.png",
-        actions: ["saucyStatus","clumsyStatus","damage1"],
+        actions: ["clumsyStatus","damage2","damage1"],
     },
 
     "c003": {
@@ -112,7 +112,7 @@ window.Pizzas = {
         type: PizzaTypes.chill,
         src: "/images/characters/pizzas/c003.png",
         icon: "/images/icons/chill.png",
-        actions: ["saucyStatus","clumsyStatus","damage1"],
+        actions: ["saucyStatus","damage4","damage1"],
     },
 
 
