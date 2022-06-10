@@ -26,7 +26,7 @@ class CraftingMenu {
       this.element.classList.add("CraftingMenu");
       this.element.classList.add("overlayMenu");
       this.element.innerHTML = (`
-        <h2>Create a Pizza</h2>
+        <h2>Choose One pizza</h2>
       `)
     }
     //close the menu

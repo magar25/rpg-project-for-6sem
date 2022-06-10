@@ -20,7 +20,7 @@ class Overworld {
             // upadte all objects
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
-                    arrow: this.drectionInput.direction,
+                    arrow: this.directionInput.direction,
                     map: this.map,
                 })
             })
@@ -92,30 +92,75 @@ class Overworld {
     }
 
 
-    startMap(mapConfig) {
+    startMap(mapConfig, heroInitialState=null) {
         this.map = new OverworldMap(mapConfig); // loading map
         this.map.overworld = this;
         this.map.mountObjects();
+
+            //the followin will be overided when provided
+        if(heroInitialState){
+            const{hero}=this.map.gameObjects;
+            this.map.removeWall(hero.x,hero.y);
+            this.map.gameObjects.hero.x=heroInitialState.x;
+            this.map.gameObjects.hero.y=heroInitialState.y;
+            this.map.gameObjects.hero.direction = heroInitialState.direction;
+            this.map.addWall(hero.x,hero.y);
+        }
+        
+        //
+        this.progress.mapId= mapConfig.id;
+        this.progress.startingHeroX=this.map.gameObjects.hero.x;
+        this.progress.startingHeroY=this.map.gameObjects.hero.y;
+        this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
     }
 
-    main() {
-        this.hud= new Hud();
-        this.hud.main(document.querySelector(".game-container"));
+    async main() {
 
-      this.startMap(window.OverworldMaps.DemoRoom);
+        const container = document.querySelector(".game-container");
+
+        //creating new progress tracker
+        this.progress = new Progress();
+
+        //show the title screen
+        this.titleScreen=new TitleScreen({
+            progress: this.progress
+        })
+       const useSaveFile= await this.titleScreen.main(container); 
+
+        //checking for save data
+
+        let initialHeroState =null;
+        
+        if(useSaveFile){
+            this.progress.load();
+            initialHeroState={
+                x: this.progress.startingHeroX,
+                y: this.progress.startingHeroY,
+                direction:this.progress.startingHeroDirection,
+            }
+        }
+
+        //loading the hud
+        this.hud= new Hud();
+        this.hud.main(container);
+
+      //this.startMap(window.OverworldMaps.DemoRoom);
       //  this.startMap(window.OverworldMaps.Kitchen);
       // this.startMap(window.OverworldMaps.DiningRoom);
      // this.startMap(window.OverworldMaps.GreenKitchen);
-      // this.startMap(window.OverworldMaps.PizzaShop);
+      this.startMap(window.OverworldMaps.PizzaShop);
        //this.startMap(window.OverworldMaps.Street);
      //this.startMap(window.OverworldMaps.StreetNorth);
       
 
+     //start the first map
+   //  this.startMap(window.OverworldMaps[this.progress.mapId],initialHeroState);
+
         this.bindActionInput();
         this.bindHeroPositionCheck();
 
-        this.drectionInput = new DirectionInput();
-        this.drectionInput.main();
+        this.directionInput = new DirectionInput();
+        this.directionInput.main();
 
         this.startGameLoop(); // starts this loop when the game starts
 
