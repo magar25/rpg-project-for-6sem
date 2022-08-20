@@ -10,11 +10,11 @@ class SubmissionMenu {
         let quantityMap = {};
         items.forEach(item => {
           if (item.team === caster.team) {
-            let existing = quantityMap[item.actionId];
-            if (existing) {
-              existing.quantity += 1;
+            let existing = quantityMap[item.actionId];//check if the name of the items are same or not
+            if (existing) { // if yes the quantity of the item is increased 
+              existing.quantity += 1; 
             } else {
-              quantityMap[item.actionId] = {
+              quantityMap[item.actionId] = { // if not the new item is registered
                 actionId: item.actionId,
                 quantity: 1,
                 instanceId: item.instanceId,
@@ -26,7 +26,7 @@ class SubmissionMenu {
         
     }
 
-    //Different option avilabel while battling to the player
+    //Different option avilable while battling to the player
     getPages(){
         // to go back to the main menu 
         const backOption={
@@ -130,7 +130,7 @@ class SubmissionMenu {
         })
     }
     
-    menuSubmit(action, instanceId=null) {
+    menuSubmit(action, instanceId=null) { // isntanceId is to know which item we used in battle
 
         this.keyboardMenu?.end(); //end the keyboardMenu binding
 
@@ -138,13 +138,15 @@ class SubmissionMenu {
             action,
             //checking who to perfomr the action on 
             target: action.targetType === "friendly" ? this.caster : this.enemy,
-            instanceId
+            instanceId,
         })
     }
 
+    //ememies attack ..
     decide() {
-        //ememies should ramdomly decide what to do ..
-        this.menuSubmit(Actions[this.caster.actions[0]]);
+       Math.floor(Math.random() * window.Actions.length);
+       this.menuSubmit(Actions[this.caster.actions[0]]);
+    
     }
 
     showMenu (container){
@@ -158,10 +160,10 @@ class SubmissionMenu {
 
         if(this.caster.isPlayerControlled){
             // show some UI
-            this.showMenu(container);
+            this.showMenu(container); // for player to choose actions
 
         }else {
-            this.decide();
+            this.decide(); // enemy attacks automatically
         }
     }
 

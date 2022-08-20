@@ -17,7 +17,7 @@ window.Pizzas = {
         type: PizzaTypes.spicy,
         src: "/images/characters/pizzas/s001.png",
         icon: "/images/icons/spicy.png",
-        actions: ["damage1","damage4","SupersaucyStatus","clumsyStatus",],
+        actions: ["damage1","damage4","SupersaucyStatus",],
     },
     "s002": {
         name: "Flame On",
@@ -43,7 +43,7 @@ window.Pizzas = {
         type: PizzaTypes.veggie,
         src: "/images/characters/pizzas/v001.png",
         icon: "/images/icons/veggie.png",
-        actions: ["damage1",,"damage3","clumsyStatus"],
+        actions: ["damage1","damage3","clumsyStatus"],
     },
     "v002": {
         name: "Bro-broccoli",
@@ -59,7 +59,7 @@ window.Pizzas = {
         type: PizzaTypes.veggie,
         src: "/images/characters/pizzas/v003.png",
         icon: "/images/icons/veggie.png",
-        actions: ["damage2",,"damage3","clumsyStatus"],
+        actions: ["damage2","damage3","clumsyStatus"],
     },
 
     //fungai
@@ -77,7 +77,7 @@ window.Pizzas = {
         type: PizzaTypes.fungi,
         src: "/images/characters/pizzas/f002.png",
         icon: "/images/icons/fungi.png",
-        actions: ["damage2",,"damage3","clumsyStatus"],
+        actions: ["damage2","damage3","clumsyStatus"],
     },
     "f003": {
         name: "Cremini Bisporus",

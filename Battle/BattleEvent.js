@@ -139,6 +139,8 @@ class BattleEvent {
             combatant.xp = 0;   //setting the exp back to 0
             combatant.maxXp += 25; // setting next max exp poing
             combatant.level += 1; //increasing the lvl by 1
+            combatant.maxHp +=25; // increase max hp by  25
+
           }
 
                 combatant.update();

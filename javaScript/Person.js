@@ -3,6 +3,7 @@ class Person extends GameObject {
         super(config);
         this.movingPogressRemaining = 0; // initial position
         this.isStanding = false;
+        this.intentPosition = null; // [x,y]
 
         this.isPlayerControlled = config.isPlayerControlled || false; // it is false so we cannot control any unit
 
@@ -13,6 +14,7 @@ class Person extends GameObject {
             "right": ["x", 1],
 
         }
+        this.standBehaviorTimeout;
     }
 
     update(state) {
@@ -34,6 +36,11 @@ class Person extends GameObject {
     }
 
     startBehavior(state, behavior) {
+
+        if (!this.isMounted) {
+            return;
+          }
+      
         //set character direction 
         this.direction = behavior.direction; // taking arrow key 
 
@@ -49,7 +56,7 @@ class Person extends GameObject {
                 return;
             }
             //ready to walk
-            state.map.moveWall(this.x, this.y, this.direction);
+           // state.map.moveWall(this.x, this.y, this.direction);
             this.movingPogressRemaining = 16; //reset the counter to 16 or grid size
             this.updateSprite(state); // update proper sprite so we get waking animation
         }

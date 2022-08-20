@@ -14,7 +14,7 @@ class TurnCycle {
         const casterId = this.battle.activeCombatants[this.currentTeam];
         const caster = this.battle.combatants[casterId];
 
-        //who is enemy is
+        //who the enemy is
         const enemyId = this.battle.activeCombatants[caster.team === "player" ? "enemy" : "player"]
         const enemy = this.battle.combatants[enemyId]
 
@@ -145,7 +145,6 @@ class TurnCycle {
         if(expiredEvent){
             await this.onNewEvent(expiredEvent)
         }
-        
         this.nextTurn();
        
     }

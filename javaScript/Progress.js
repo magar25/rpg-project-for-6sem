@@ -19,7 +19,7 @@ class Progress{
                 pizzas:playerState.pizzas,
                 lineup: playerState.lineup,
                 items: playerState.items,
-                storyFlags:playerState.storyFlags
+                storyFlags:playerState.storyFlags,
             }
         }))
 

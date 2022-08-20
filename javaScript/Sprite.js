@@ -23,9 +23,10 @@ class Sprite {
 
         //Configuring animation and initial state
         this.animations = config.animations || {
+            //defaut animations 
             "idle-down": [
                 [0, 0]
-            ], //defaut animations 
+            ], 
             "idle-right": [
                 [0, 1]
             ],
@@ -35,6 +36,7 @@ class Sprite {
             "idle-left": [
                 [0, 3]
             ],
+            // walking animation
             "walk-down": [
                 [1, 0],
                 [0, 0],
@@ -108,7 +110,7 @@ class Sprite {
         const x = this.gameObject.x - 8 + utils.withGrid(10.5) - cameraPerson.x; //each square is 16*16
         const y = this.gameObject.y - 18 + utils.withGrid(6) - cameraPerson.y; //each square is 16*16
 
-        this.isShadowLoaded && ctx.drawImage(this.shadow, x, y);
+        this.isShadowLoaded && ctx.drawImage(this.shadow, x, y); 
 
 
         const [frameX, frameY] = this.frame;

@@ -5,15 +5,15 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "s001",
-        maxHp: 50,
-        level: 1,
+        maxHp: 150,
+        level: 5,
       },
       "b": {
         pizzaId: "s002",
-        maxHp: 50,
-        level: 1,
+        maxHp: 120,
+        level: 4,
       },
-    }
+    },
   },
   "beth": {
     name: "Beth",
@@ -21,7 +21,7 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "f001",
-        maxHp: 20,
+        maxHp: 50,
         level: 1,
       },
     }
@@ -32,7 +32,7 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "f002",
-        maxHp: 20,
+        maxHp: 50,
         level: 2,
       }
     }
@@ -43,7 +43,7 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "s003",
-        maxHp: 20,
+        maxHp: 50,
         level: 1,
       }
     }
@@ -54,12 +54,12 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "s001",
-        maxHp: 15,
+        maxHp: 50,
         level: 1,
       },
       "b": {
         pizzaId: "s002",
-        maxHp: 15,
+        maxHp: 50,
         level: 1,
       }
     }
@@ -70,7 +70,7 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "f002",
-        maxHp: 25,
+        maxHp: 50,
         level: 1,
       }
     }

@@ -40,9 +40,6 @@ class TitleScreen{
             <h1 class="heading"> Slayer </h1>
         `)
        
-
-
-
     }
 
     close(){
@@ -57,7 +54,7 @@ class TitleScreen{
             container.appendChild(this.element);
             this.keyboardMenu=new KeyboardMenu();
             this.keyboardMenu.main(this.element);
-            this.keyboardMenu.setOptions(this.getOptions(resolve))
+            this.keyboardMenu.setOptions(this.getOptions(resolve));
         })
     }
 }

@@ -6,7 +6,7 @@ class PlayerState{
             pizzaId: "s001",
             hp: 50,
             maxHp: 50,
-            xp: 0,
+            xp: 90,
             maxXp: 100,
             level: 1,
             status: null,

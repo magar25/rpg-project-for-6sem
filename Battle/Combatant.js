@@ -104,9 +104,9 @@ class Combatant {
 
     //implementing what clumsy status do 
     getReplacedEvents(originalEvents){
-        if(this.status?.type ==="clumsy" && utils.randomFromArray([false,true,false])){
+        if(this.status?.type ==="clumsy" && utils.randomFromArray([false,true,false])){//attack fails 1/3 of the time
             return[
-                {type:"textMessage",text:`${this.name} flops over!`},
+                {type:"textMessage",text:`${this.name} flops over!`}, // this message will be shown if it lands on true
             ]
         }
         return originalEvents;

@@ -13,7 +13,6 @@ class Overworld {
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clears the frame everytime it loads
 
             //Camara following the main character
-
             const cameraPerson = this.map.gameObjects.hero;
 
 
@@ -98,19 +97,17 @@ class Overworld {
         this.map.mountObjects();
 
             //the followin will be overided when provided
-        if(heroInitialState){
-            const{hero}=this.map.gameObjects;
-            this.map.removeWall(hero.x,hero.y);
-            this.map.gameObjects.hero.x=heroInitialState.x;
-            this.map.gameObjects.hero.y=heroInitialState.y;
-            this.map.gameObjects.hero.direction = heroInitialState.direction;
-            this.map.addWall(hero.x,hero.y);
-        }
+            if (heroInitialState) {
+                const {hero} = this.map.gameObjects;
+                hero.x = heroInitialState.x;
+                hero.y = heroInitialState.y;
+                hero.direction = heroInitialState.direction;
+              }
         
         //
-        this.progress.mapId= mapConfig.id;
-        this.progress.startingHeroX=this.map.gameObjects.hero.x;
-        this.progress.startingHeroY=this.map.gameObjects.hero.y;
+        this.progress.mapId = mapConfig.id;
+        this.progress.startingHeroX = this.map.gameObjects.hero.x;
+        this.progress.startingHeroY = this.map.gameObjects.hero.y;
         this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
     }
 
@@ -133,6 +130,7 @@ class Overworld {
         
         if(useSaveFile){
             this.progress.load();
+            //position and the direction the hero is facing
             initialHeroState={
                 x: this.progress.startingHeroX,
                 y: this.progress.startingHeroY,
@@ -145,41 +143,32 @@ class Overworld {
         this.hud.main(container);
 
       //this.startMap(window.OverworldMaps.DemoRoom);
-      //  this.startMap(window.OverworldMaps.Kitchen);
+       this.startMap(window.OverworldMaps.Kitchen);
       // this.startMap(window.OverworldMaps.DiningRoom);
      // this.startMap(window.OverworldMaps.GreenKitchen);
-      this.startMap(window.OverworldMaps.PizzaShop);
+      //this.startMap(window.OverworldMaps.PizzaShop);
        //this.startMap(window.OverworldMaps.Street);
      //this.startMap(window.OverworldMaps.StreetNorth);
       
 
      //start the first map
-   //  this.startMap(window.OverworldMaps[this.progress.mapId],initialHeroState);
+     this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState );
 
-        this.bindActionInput();
-        this.bindHeroPositionCheck();
+     //Create controls
+     this.bindActionInput();
+     this.bindHeroPositionCheck();
+   
+     this.directionInput = new DirectionInput();
+     this.directionInput.main();
 
-        this.directionInput = new DirectionInput();
-        this.directionInput.main();
+     this.startGameLoop(); // starts this loop when the game starts
 
-        this.startGameLoop(); // starts this loop when the game starts
+        //  this.map.startCutscene([
+        // //     // { type: "battle" , enemyId:"beth" },
+        // //     // { type: "changeMap", map: "DemoRoom" },
 
-        this.map.startCutscene([
-
-
-            // { type: "battle" , enemyId:"beth" },
-            // { type: "changeMap", map: "DemoRoom" },
-
-            //  setting up event when cutscene triggers
-
-            // { who: "hero", type: "walk", direction: "down" },
-            // { who: "hero", type: "walk", direction: "down" },
-            // { who: "npcA", type: "walk", direction: "left" },
-            // { who: "npcA", type: "walk", direction: "up" },
-            // { who: "npcA", type: "stand", direction: "left", time: 200 },
-            // { who: "hero", type: "stand", direction: "right", time: 200 },
-            // { type: "textMessage", text: " HELLO HOW ARE YOU !" },
-        ])
+        // //     //  setting up event when cutscene triggers
+        //  ])
 
 
     }

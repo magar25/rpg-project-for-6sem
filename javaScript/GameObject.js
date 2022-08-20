@@ -8,21 +8,17 @@ class GameObject {
         this.direction = config.direction || "down";
         this.sprite = new Sprite({
             gameObject: this,
-            src: config.src || "/images/characters/people/hero.png",
-        }); // sprites of the character 
+            src: config.src || "/images/characters/people/hero.png", // sprites of the character 
+        });
 
         this.behaviorLoop = config.behaviorLoop || [];
         this.behaviorLoopIndex = 0; // to know or track which behavior we are on 
-
-
         this.talking = config.talking || []; // to see if some one is taking or not
+        this.retryTimeout = null;
     }
 
     mount(map) { // adding objects to the scene
-        //console.log("mounting!");
         this.isMounted = true;
-        map.addWall(this.x, this.y);
-
 
         //if we have a behavior, kick off after a short delay
         setTimeout(() => {

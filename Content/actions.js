@@ -14,7 +14,7 @@ window.Actions = {
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
             { type: "animation", animation: "spin" },
-            { type: "stateChange", damage:  6},
+            { type: "stateChange", damage:  7},
         ]
     },
     damage3: {
@@ -41,7 +41,7 @@ window.Actions = {
         targetType:"friendly",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
-            { type: "stateChange", status:{type:"saucy" ,expiresIn:3 }},
+            { type: "stateChange", status:{type:"saucy" ,expiresIn:3 }}, 
         ]
     },
     SupersaucyStatus: {
@@ -69,7 +69,7 @@ window.Actions = {
 
     item_recoverStatus:{
         name:"Heating Lamp",
-        description:"Feeling fresh",
+        description:"Heals status condition",
         targetType:"friendly",
         success: [
             { type: "textMessage", text: "{CASTER} uses {ACTION}!" },
@@ -79,11 +79,11 @@ window.Actions = {
     },
     item_recoverHp:{
         name:"Parmesan",
-        description:"Feeling warm",
+        description:"recover HP",
         targetType:"friendly",
         success: [
             { type: "textMessage", text: "{CASTER} sprinkels on some {ACTION}!" },
-            { type: "stateChange", recover:10},
+            { type: "stateChange", recover:100},
             {type:"textMessage", text:"{CASTER} recovers some HP"},
         ]
     },

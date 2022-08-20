@@ -79,7 +79,7 @@ class KeyboardMenu{
         (this.descriptionContainer ||container).appendChild(this.descriptionElement);
         container.appendChild(this.element);
 
-        //to select upper option in Menu
+        //to select upper option in Menu // search algorithm
         this.up = new keyPressListener("ArrowUp", ()=>{
             const current = Number(this.prevFocus.getAttribute("data-button"));
              //to find the button which is less & not disabled buttons and focus it
@@ -89,7 +89,7 @@ class KeyboardMenu{
             prevButton ?.focus();
         })
 
-        //to select below option in Menu
+        //to select below option in Menu  // search algorithm
         this.down = new keyPressListener("ArrowDown", ()=>{
             const current = Number(this.prevFocus.getAttribute("data-button"));
             //to find the button which is greater then and not disabled buttons and focus it
