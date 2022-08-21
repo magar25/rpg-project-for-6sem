@@ -36,9 +36,21 @@ class GameObject {
 
         // dont do anything if there is cutscene
 
-        if (map.isCutscenePlaying || this.behaviorLoop.length === 0 || this.isStanding) {
+        if (this.behaviorLoop.length === 0) {
+            return;  
+          }
+
+          if (map.isCutscenePlaying) {
+
+           // console.log("will retry", this.id)
+            if (this.retryTimeout) {
+              clearTimeout(this.retryTimeout);
+            }
+            this.retryTimeout = setTimeout(() => {
+              this.doBehaviorEvent(map);
+            }, 1000)
             return;
-        }
+          }
 
         //setting up our event
         let eventConfig = this.behaviorLoop[this.behaviorLoopIndex];

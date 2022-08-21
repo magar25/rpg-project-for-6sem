@@ -470,8 +470,16 @@ window.OverworldMaps = { //object of all the maps in the game
                 y: utils.withGrid(11),
                 src: "/images/characters/people/npc2.png",
                 behaviorLoop: [
-                  { type: "stand", direction: "right", time: 1400, },
                   { type: "stand", direction: "up", time: 900, },
+                  { type: "walk", direction: "down"},
+                  { type: "walk", direction: "down"},
+                  { type: "stand", direction: "right", time: 800, },
+                  { type: "stand", direction: "down", time: 400, },
+                  { type: "stand", direction: "right", time: 800, },
+                  { type: "walk", direction: "up"},
+                  { type: "walk", direction: "up"},
+                  { type: "stand", direction: "up", time: 600, },
+                  { type: "stand", direction: "right", time: 900, },
                 ],
                 talking: [
                   {
@@ -730,7 +738,7 @@ window.OverworldMaps = { //object of all the maps in the game
             diningRoomNpcA: {
               type: "Person",
               x: utils.withGrid(12),
-              y: utils.withGrid(8),
+              y: utils.withGrid(10),
               src: "/images/characters/people/npc8.png",
               talking: [
                 {
@@ -756,7 +764,7 @@ window.OverworldMaps = { //object of all the maps in the game
               talking: [
                 {
                   events: [
-                    { type: "textMessage", text: "People come from all over to dine here.", faceHero: "diningRoomNpcB" },
+                    { type: "textMessage", text: "You must get back our recipe fast.", faceHero: "diningRoomNpcB" },
                   ]
                 },
               ]
@@ -767,9 +775,15 @@ window.OverworldMaps = { //object of all the maps in the game
               y: utils.withGrid(8),
               src: "/images/characters/people/npc7.png",
               behaviorLoop: [
+                { type: "stand", direction: "up", time: 900, },
+      
+                { type: "walk", direction: "down"},
                 { type: "stand", direction: "right", time: 800, },
-                { type: "stand", direction: "down", time: 700, },
+                { type: "stand", direction: "down", time: 400, },
                 { type: "stand", direction: "right", time: 800, },
+                { type: "walk", direction: "up"},
+                { type: "stand", direction: "up", time: 600, },
+                { type: "stand", direction: "right", time: 900, },
               ],
               talking: [
                 {
@@ -918,15 +932,22 @@ window.OverworldMaps = { //object of all the maps in the game
             shopNpcB: {
                 type: "Person",
                 x: utils.withGrid(5),
-                y: utils.withGrid(9),
+                y: utils.withGrid(8),
                 src: "/images/characters/people/npc2.png",
                 behaviorLoop: [
                   { type: "stand", direction: "left", time: 400, },
+                  {type:"walk", direction:"down"},
+                  { type: "stand", direction: "left", time: 400, },
+                  {type:"walk", direction:"down"},
+                  { type: "stand", direction: "left", time: 400, },
+                  {type:"walk", direction:"up"}, 
+                  { type: "stand", direction: "left", time: 400, },
+                  {type:"walk", direction:"up"}, 
                 ],
                 talking: [
                   {
                     events: [
-                      { type: "textMessage", text: "There is notheing left ...", faceHero: "shopNpcB" },
+                      { type: "textMessage", text: "There is nothing left ...", faceHero: "shopNpcB" },
                         ]
                     },
                    

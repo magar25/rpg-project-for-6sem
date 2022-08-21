@@ -143,7 +143,7 @@ class Overworld {
         this.hud.main(container);
 
       //this.startMap(window.OverworldMaps.DemoRoom);
-       this.startMap(window.OverworldMaps.Kitchen);
+      // this.startMap(window.OverworldMaps.Kitchen);
       // this.startMap(window.OverworldMaps.DiningRoom);
      // this.startMap(window.OverworldMaps.GreenKitchen);
       //this.startMap(window.OverworldMaps.PizzaShop);

@@ -17,7 +17,7 @@ window.Pizzas = {
         type: PizzaTypes.spicy,
         src: "/images/characters/pizzas/s001.png",
         icon: "/images/icons/spicy.png",
-        actions: ["damage1","damage4","SupersaucyStatus",],
+        actions: ["clumsyStatus","damage4","SupersaucyStatus",],
     },
     "s002": {
         name: "Flame On",

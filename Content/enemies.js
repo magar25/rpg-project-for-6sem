@@ -14,6 +14,7 @@ window.Enemies = {
         level: 4,
       },
     },
+
   },
   "beth": {
     name: "Beth",
@@ -21,10 +22,10 @@ window.Enemies = {
     pizzas: {
       "a": {
         pizzaId: "f001",
-        maxHp: 50,
+        maxHp: 50, 
         level: 1,
       },
-    }
+    },
   },
   "chefRootie": {
     name: "Rootie",
